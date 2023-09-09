@@ -32,7 +32,7 @@ def add_matrices(mat1, mat2):
     def add_elementwise(matrix1, matrix2):
         # Recursively add elements of matrices
         if isinstance(matrix1, list):
-            return [add_elementwise(m1, m2) for m1, m2 in 
+            return [add_elementwise(m1, m2) for m1, m2 in
                     zip(matrix1, matrix2)]
         else:
             return matrix1 + matrix2
@@ -51,14 +51,14 @@ if __name__ == "__main__":
     print(add_matrices(mat3, mat4))
 
     mat5 = [[[[1, 2, 3, 4], [5, 6, 7, 8]],
-             [[9, 10, 11, 12], [13, 14,15, 16]],
+             [[9, 10, 11, 12], [13, 14, 15, 16]],
              [[17, 18, 19, 20], [21, 22, 23, 24]]]]
     mat6 = [[[[11, 12, 13, 14], [15, 16, 17, 18]],
-             [[19, 110, 111, 112], [113, 114,115, 116]],
+             [[19, 110, 111, 112], [113, 114, 115, 116]],
              [[117, 118, 119, 120], [121, 122, 123, 124]]]]
     mat7 = [[[[11, 12, 13, 14], [15, 16, 17, 18]],
              [[117, 118, 119, 120], [121, 122, 123, 124]]]]
-    
+
     print(add_matrices(mat5, mat6))
     print(add_matrices(mat5, mat7))
 
