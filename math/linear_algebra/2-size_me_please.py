@@ -1,5 +1,9 @@
 #!/usr/bin/env python3
 
+"""
+This module defines a function for calculating the shape of a matrix.
+"""
+
 def matrix_shape(matrix):
     """
     Calculate the shape (dimensions) of a matrix.
@@ -15,7 +19,6 @@ def matrix_shape(matrix):
         shape.append(len(matrix))
         matrix = matrix[0]
     return shape
-
 
 if __name__ == "__main__":
     matrix_shape = __import__('2-size_me_please').matrix_shape
