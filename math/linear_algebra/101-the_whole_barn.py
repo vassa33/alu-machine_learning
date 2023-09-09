@@ -38,6 +38,7 @@ def add_matrices(mat1, mat2):
 
     return add_elementwise(mat1, mat2)
 
+
 # Test cases
 if __name__ == "__main__":
     mat1 = [1, 2, 3]
