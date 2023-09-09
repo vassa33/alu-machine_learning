@@ -18,14 +18,14 @@ def np_shape(matrix):
     if not isinstance(matrix, list):
         return ()
     
-    shape = []
-    while isinstance(matrix, list):
-        shape.append(len(matrix))
-        if matrix:
-            matrix = matrix[0]
-        else:
-            break
+    def shape_helper(matrix, shape):
+        if isinstance(matrix, list):
+            shape.append(len(matrix))
+            if matrix:
+                shape_helper(matrix[0], shape)
     
+    shape = []
+    shape_helper(matrix, shape)
     return tuple(shape)
 
 
