@@ -27,7 +27,7 @@ def cat_matrices(mat1, mat2, axis=0):
     shape2 = shape_of_matrix(mat2)
 
     # Check if the shapes of both matrices match along the specified axis
-    if shape1[:axis] != shape2[:axis] or shape1[axis + 1:] != shape2[axis + 1:]:
+    if shape1[axis] != shape2[axis]:
         return None
 
     def concatenate_matrices(matrix1, matrix2):
@@ -64,9 +64,15 @@ if __name__ == "__main__":
     mat4 = [[[[11, 12, 13, 14], [15, 16, 17, 18]],
              [[19, 110, 111, 112], [113, 114, 115, 116]],
              [[117, 118, 119, 120], [121, 122, 123, 124]]]]
-    print(cat_matrices(mat3, mat4, axis=0))  # Should return a concatenated high-dimensional matrix
+    result = cat_matrices(mat3, mat4, axis=0)
+    for row in result:
+        print(row)
 
     # Test case: Correct output - high dimensional matrix, axis = 2
     mat5 = [[[[11, 12, 13, 14], [15, 16, 17, 18]],
              [[117, 118, 119, 120], [121, 122, 123, 124]]]]
-    print(cat_matrices(mat3, mat5, axis=2))  # Should return a concatenated high-dimensional matrix
+    result = cat_matrices(mat3, mat5, axis=2)
+    for row in result:
+        for subrow in row:
+            for item in subrow:
+                print(item)
