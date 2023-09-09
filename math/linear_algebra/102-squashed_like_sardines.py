@@ -47,17 +47,26 @@ def cat_matrices(mat1, mat2, axis=0):
 
 # Test cases
 if __name__ == "__main__":
-    mat1 = [[11, 22, 33], [44, 55, 66]]
-    mat2 = [[1, 2, 3], [4, 5, 6]]
-    print(cat_matrices(mat1, mat2))
-    print(cat_matrices(mat1, mat2, axis=1))
-    print(cat_matrices(mat1, mat2, axis=2))
+    # Test case: Correct output - vectors
+    mat1 = [1, 2, 3]
+    mat2 = [4, 5, 6]
+    print(cat_matrices(mat1, mat2))  # Should return [1, 2, 3, 4, 5, 6]
 
+    # Test case: Correct output - 2D matrix, axis = 0
+    mat1 = [[1, 2], [3, 4]]
+    mat2 = [[5, 6], [7, 8]]
+    print(cat_matrices(mat1, mat2, axis=0))  # Should return [[1, 2], [3, 4], [5, 6], [7, 8]]
+
+    # Test case: Correct output - high dimensional matrix, axis = 0
     mat3 = [[[[1, 2, 3, 4], [5, 6, 7, 8]],
              [[9, 10, 11, 12], [13, 14, 15, 16]],
              [[17, 18, 19, 20], [21, 22, 23, 24]]]]
     mat4 = [[[[11, 12, 13, 14], [15, 16, 17, 18]],
              [[19, 110, 111, 112], [113, 114, 115, 116]],
              [[117, 118, 119, 120], [121, 122, 123, 124]]]]
-    
-    print(cat_matrices(mat3, mat4, axis=3))
+    print(cat_matrices(mat3, mat4, axis=0))  # Should return a concatenated high-dimensional matrix
+
+    # Test case: Correct output - high dimensional matrix, axis = 2
+    mat5 = [[[[11, 12, 13, 14], [15, 16, 17, 18]],
+             [[117, 118, 119, 120], [121, 122, 123, 124]]]]
+    print(cat_matrices(mat3, mat5, axis=2))  # Should return a concatenated high-dimensional matrix
