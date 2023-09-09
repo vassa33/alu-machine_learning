@@ -7,7 +7,7 @@ This module defines a function for calculating the shape of a numpy.ndarray
 
 def np_shape(matrix):
     """
-    Calculate the shape of a numpy.ndarray without using loops or recursion.
+    Calculate the shape of a numpy.ndarray without using loops or conditional statements.
 
     Args:
     matrix (list): The input nested list representing a matrix.
@@ -19,14 +19,11 @@ def np_shape(matrix):
         return ()
     
     def shape_helper(matrix, shape):
-        if isinstance(matrix, list):
-            shape.append(len(matrix))
-            if matrix:
-                shape_helper(matrix[0], shape)
+        shape.append(len(matrix))
+        shape.extend(shape_helper(matrix[0], [])) if matrix else None
+        return shape
     
-    shape = []
-    shape_helper(matrix, shape)
-    return tuple(shape)
+    return tuple(shape_helper(matrix, []))
 
 
 if __name__ == "__main__":
