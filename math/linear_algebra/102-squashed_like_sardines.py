@@ -33,7 +33,8 @@ def cat_matrices(mat1, mat2, axis=0):
     def concatenate_matrices(matrix1, matrix2):
         # Recursively concatenate matrices along the specified axis
         if isinstance(matrix1, list):
-            return [concatenate_matrices(m1, m2) for m1, m2 in zip(matrix1, matrix2)]
+            return [concatenate_matrices(m1, m2) for m1, m2 in
+                    zip(matrix1, matrix2)]
         else:
             return matrix1 + matrix2
 
@@ -55,7 +56,8 @@ if __name__ == "__main__":
     # Test case: Correct output - 2D matrix, axis = 0
     mat1 = [[1, 2], [3, 4]]
     mat2 = [[5, 6], [7, 8]]
-    print(cat_matrices(mat1, mat2, axis=0))  # Should return [[1, 2], [3, 4], [5, 6], [7, 8]]
+    # Should return [[1, 2], [3, 4], [5, 6], [7, 8]]
+    print(cat_matrices(mat1, mat2, axis=0))
 
     # Test case: Correct output - high dimensional matrix, axis = 0
     mat3 = [[[[1, 2, 3, 4], [5, 6, 7, 8]],
