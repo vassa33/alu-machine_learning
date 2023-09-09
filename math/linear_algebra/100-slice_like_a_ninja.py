@@ -5,24 +5,42 @@ import numpy as np
 
 def np_slice(matrix, axes={}):
     """
-    Slice a NumPy matrix along specific axes.
+    Slices a matrix along specific axes.
 
     Args:
-    matrix (numpy.ndarray): The input matrix.
+    matrix (list): The input matrix.
     axes (dict): A dictionary where the key is an axis to slice along,
                  and the value is a tuple representing the slice to make
                  along that axis.
 
     Returns:
-    numpy.ndarray: A new NumPy matrix resulting from the specified slices.
+    list: A new matrix resulting from the specified slices.
     """
-    slices = [slice(None)] * matrix.ndim
 
-    for axis, axis_slice in axes.items():
-        slices[axis] = slice(*axis_slice)
+    def slice_matrix(matrix, axis, indices):
+        # Recursively slice the matrix along the specified axis
+        if axis == 0:
+            return matrix[indices[0]:indices[1]]
+        elif axis == 1:
+            return [row[indices[0]:indices[1]] for row in matrix]
+        else:
+            return None
 
-    return matrix[tuple(slices)]
+    result = matrix
+    for axis, indices in axes.items():
+        result = slice_matrix(result, axis, indices)
+
+    return result
 
 
+# Test cases
 if __name__ == "__main__":
-    np_slice = __import__('100-slice_like_a_ninja').np_slice
+    # Test case 1
+    mat1 = [[1, 2, 3, 4, 5], [6, 7, 8, 9, 10]]
+    print(np_slice(mat1, axes={1: (1, 3)}))  # Should return [[2, 3], [7, 8]]
+
+    # Test case 2
+    mat2 = [[[1, 2, 3, 4, 5], [6, 7, 8, 9, 10]],
+            [[11, 12, 13, 14, 15], [16, 17, 18, 19, 20]],
+            [[21, 22, 23, 24, 25], [26, 27, 28, 29, 30]]]
+    print(np_slice(mat2, axes={0: (2,), 2: (None, None, -2)}))
