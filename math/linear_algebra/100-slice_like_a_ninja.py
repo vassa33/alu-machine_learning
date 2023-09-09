@@ -27,10 +27,10 @@ def np_slice(matrix, axes={}):
 
     result = matrix
     for axis, indices in axes.items():
-        result = slice_matrix(result, axis, indices)
+        if axis < len(result):
+            result = slice_matrix(result, axis, indices)
 
     return result
-
 
 # Test cases
 if __name__ == "__main__":
