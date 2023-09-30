@@ -19,7 +19,7 @@ class Poisson():
 
     def pmf(self, k):
         """calculates the value of the PMF for a given number of “successes”"""
-        
+
         if k < 0:
             return 0
         if type(k) is not int:
@@ -37,7 +37,7 @@ class Poisson():
 
     def cdf(self, k):
         """Calculates the value of the CDF for a given number of “successes”"""
-        
+
         if type(k) is not int:
             k = int(k)
         if k < 0:
