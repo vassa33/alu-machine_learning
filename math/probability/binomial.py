@@ -1,5 +1,8 @@
 #!/usr/bin/env python3
-"""A class Binomial representing a Binomial Probability Distribution"""
+"""A class Binomial representing a Binomial Probability Distribution.
+ This distribution is commonly used to model the number of successes (usually denoted as "k")
+ in a fixed number of independent Bernoulli trials, where each trial has two possible outcomes:
+ success with probability "p" and failure with probability "1-p.""""
 
 
 def factorial(n):
