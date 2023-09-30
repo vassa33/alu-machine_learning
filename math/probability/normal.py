@@ -1,5 +1,9 @@
 #!/usr/bin/env python3
-"""A class Normal representing a Normal Distribution"""
+"""A class Normal representing a Normal Distribution.
+The normal distribution, also known as the Gaussian distribution,
+is characterized by a bell-shaped curve and is symmetrical around the mean.
+Many real-world phenomena, such as the heights of individuals in a population
+or measurement errors, can be approximated by the normal distribution."""
 
 
 class Normal():
