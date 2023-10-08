@@ -2,7 +2,9 @@
 """This module defines a function for performing
 convolution on grayscale images with various options."""
 
+
 import numpy as np
+
 
 def convolve_grayscale(images, kernel, padding='same', stride=(1, 1)):
     """
