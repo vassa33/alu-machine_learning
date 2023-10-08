@@ -30,8 +30,8 @@ def convolve_grayscale(images, kernel, padding='same', stride=(1, 1)):
     elif isinstance(padding, tuple) and len(padding) == 2:
         ph, pw = padding
     else:
-        raise ValueError("Invalid padding option. Use 'same', 'valid', or a (ph,
-        pw) tuple.")
+        raise ValueError("Invalid padding option. Use '
+        same', 'valid', or a (ph, pw) tuple.")
 
     # Pad the input images
     images_padded = np.pad(images, ((0, 0), (ph, ph), (pw, pw)),
