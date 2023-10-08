@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
-"""This module defines a function for performing strided convolution on grayscale images."""
+"""This module defines a function for performing
+strided convolution on grayscale images."""
 
 import numpy as np
 
@@ -29,10 +30,12 @@ def convolve_grayscale(images, kernel, padding='same', stride=(1, 1)):
     elif isinstance(padding, tuple) and len(padding) == 2:
         ph, pw = padding
     else:
-        raise ValueError("Invalid padding option. Use 'same', 'valid', or a (ph, pw) tuple.")
+        raise ValueError("Invalid padding option. Use 'same',
+        'valid', or a (ph, pw) tuple.")
 
     # Pad the input images
-    images_padded = np.pad(images, ((0, 0), (ph, ph), (pw, pw)), mode='constant')
+    images_padded = np.pad(images, ((0, 0), (ph, ph), (pw, pw)),
+                           mode='constant')
 
     # Calculate output dimensions
     output_h = (h + 2 * ph - kh) // sh + 1
@@ -45,7 +48,8 @@ def convolve_grayscale(images, kernel, padding='same', stride=(1, 1)):
     for i in range(output_h):
         for j in range(output_w):
             output[:, i, j] = np.sum(
-                images_padded[:, i * sh:i * sh + kh, j * sw:j * sw + kw] * kernel,
+                images_padded[:, i * sh:i * sh + kh,
+                j * sw:j * sw + kw] * kernel,
                 axis=(1, 2)
             )
 
