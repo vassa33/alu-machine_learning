@@ -1,4 +1,4 @@
-#usr/bin/env python3
+#!/usr/bin/env python3
 """This module defines a function for performing
 a same convolution on grayscale images"""
 
