@@ -4,6 +4,7 @@ strided convolution on grayscale images."""
 
 import numpy as np
 
+
 def convolve_grayscale(images, kernel, padding='same', stride=(1, 1)):
     """
     Perform a convolution on grayscale images with striding.
@@ -29,8 +30,8 @@ def convolve_grayscale(images, kernel, padding='same', stride=(1, 1)):
     elif isinstance(padding, tuple) and len(padding) == 2:
         ph, pw = padding
     else:
-        raise ValueError(
-            "Invalid padding option. Use 'same', 'valid', or a (ph, pw) tuple.")
+        raise ValueError("Invalid padding option.
+        Use 'same', 'valid', or a (ph, pw) tuple.")
 
     # Pad the input images
     images_padded = np.pad(images, ((0, 0), (ph, ph), (pw, pw)),
@@ -48,7 +49,8 @@ def convolve_grayscale(images, kernel, padding='same', stride=(1, 1)):
         for j in range(output_w):
             output[:, i, j] = np.sum(
                 images_padded[:, i * sh:i * sh + kh,
-                j * sw:j * sw + kw] * kernel, axis=(1, 2)
+                j * sw:j * sw + kw] * kernel,
+                axis=(1, 2)
             )
 
     return output
