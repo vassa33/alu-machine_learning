@@ -9,8 +9,8 @@ def convolve_grayscale(images, kernel, padding='same', stride=(1, 1)):
     Perform a convolution on grayscale images.
 
     Args:
-        images (numpy.ndarray): Input grayscale images with shape
-        (m, h, w).
+        images (numpy.ndarray): Input grayscale images with
+        shape (m, h, w).
         kernel (numpy.ndarray): Convolution kernel with shape
         (kh, kw).
         padding (tuple or str): Padding options: 'same', 'valid',
@@ -35,12 +35,12 @@ def convolve_grayscale(images, kernel, padding='same', stride=(1, 1)):
         ph, pw = padding
 
     # Pad the images with zeros
-    padded_images = np.pad(images, ((0, 0), (ph, ph),
-                                    (pw, pw)), mode='constant')
+    padded_images = np.pad(images, ((0, 0), (ph, ph), (pw, pw)),
+                           mode='constant')
 
     # Calculate output dimensions
-    output_h = ((h - kh + 2 * ph) // sh) + 1
-    output_w = ((w - kw + 2 * pw) // sw) + 1
+    output_h = (h + 2 * ph - kh) // sh + 1
+    output_w = (w + 2 * pw - kw) // sw + 1
 
     # Initialize the output array
     output = np.zeros((m, output_h, output_w))
@@ -49,7 +49,7 @@ def convolve_grayscale(images, kernel, padding='same', stride=(1, 1)):
         for j in range(output_w):
             output[:, i, j] = np.sum(
                 padded_images[:, i * sh:i * sh + kh,
-              j * sw:j * sw + kw] * kernel,
+                j * sw:j * sw + kw] * kernel,
                 axis=(1, 2)
             )
 
