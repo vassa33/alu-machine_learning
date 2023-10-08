@@ -2,7 +2,9 @@
 """This module defines a function for performing pooling
 on images with various options."""
 
+
 import numpy as np
+
 
 def pool(images, kernel_shape, stride, mode='max'):
     """
@@ -41,10 +43,8 @@ def pool(images, kernel_shape, stride, mode='max'):
                     axis=(1, 2)
                 )
             elif mode == 'avg':
-                output[:, i, j, :] = np.mean(
-                    images[:, i * sh:i * sh + kh,
-                            j * sw:j * sw + kw, :],
-                    axis=(1, 2)
+                output[:, i, j, :] = np.mean(images[:, i * sh:i * sh + kh,
+                                             j * sw:j * sw + kw, :], axis=(1, 2)
                 )
 
     return output
