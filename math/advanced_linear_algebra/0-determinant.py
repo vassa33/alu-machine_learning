@@ -5,38 +5,52 @@ Calculates the determinant of a matrix.
 
 
 def determinant(matrix):
-  """Calculates the determinant of a matrix.
+    """Calculates the determinant of a matrix
 
-  Args:
-    matrix: A list of lists whose determinant should be calculated.
+    Args.
+        matrix: A list of lists whose determinant should be calculated.
+    Returns:
+        The determinant of a matrix.
+    """
 
-  Returns:
-    The determinant of matrix.
+    m_len = len(matrix)
+    if m_len == 1 and not matrix[0]:
+        return 1
+    if not matrix:
+        raise TypeError("matrix must be a list of lists")
+    if not all(isinstance(x, list) for x in matrix):
+        raise TypeError("matrix must be a list of lists")
+    if not all(len(matrix) == len(x) for x in matrix):
+        raise ValueError("matrix must be a square matrix")
+    if m_len == 1:
+        return matrix[0][0]
+    if m_len == 2:
+        return matrix[0][0] * matrix[1][1] - matrix[0][1] * matrix[1][0]
 
-  Raises:
-    TypeError: If matrix is not a list of lists.
-    ValueError: If matrix is not square.
-  """
+    det = []
+    for i in range(m_len):
+        if i == 0:
+            det.append(matrix[0][i]
+                       * calc([sub[i + 1:] for sub in matrix[i + 1:]]))
+        elif i == m_len - 1:
+            if i % 2 != 0:
+                det.append(-matrix[0][i]
+                           * calc([sub[:i] for sub in matrix[1:]]))
+            else:
+                det.append(matrix[0][i]
+                           * calc([sub[:i] for sub in matrix[1:]]))
 
-  if not isinstance(matrix, list):
-    raise TypeError("matrix must be a list of lists")
+        else:
+            if i % 2 != 0:
+                det.append(-matrix[0][i]
+                           * calc([sub[:i]
+                                   + sub[i + 1:] for sub in matrix[1:]]))
+            else:
+                det.append(matrix[0][i]
+                           * calc([sub[:i]
+                                   + sub[i + 1:] for sub in matrix[1:]]))
 
-  if len(matrix) == 0 or len(matrix[0]) == 0:
-    return 1
-
-  if len(matrix) != len(matrix[0]):
-    raise ValueError("matrix must be a square matrix")
-
-  if len(matrix) == 1:
-    return matrix[0][0]
-
-  # Calculate the determinant using the Laplace expansion along the first row.
-  determinant = 0
-  for i in range(len(matrix[0])):
-    determinant += matrix[0][i] * (-1)**i * determinant(
-        [row[1:] for row in matrix[1:] if row[0] != matrix[0][i]])
-
-  return determinant
+    return sum(det)
 
 
 if __name__ == '__main__':
