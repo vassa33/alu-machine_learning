@@ -1,39 +1,35 @@
-# Classification
+# Binary Classification
+The goal of this project is to perform image classification, where the algoritm has to choose if the pic corresponds to number 1 or number 0.
 
-![image](https://github.com/vassa33/alu-machine_learning/assets/61325877/32c328e8-2074-4578-968e-d9ebf5874ea9)
+![image](https://github.com/vassa33/alu-machine_learning/assets/61325877/f5c18e95-cc01-42be-ad1b-f4f60327269e)
 
-## Background Context
-At the end of this project, you should be able to build your own binary image classifier from scratch using numpy.
 
-### Learning Objectives
-At the end of this project, you are expected to be able to explain to anyone:
+I needed to learn the following topics to have a solid foundation:
 
-What is a model?
-What is supervised learning?
-What is a prediction?
-What is a node?
-What is a weight?
-What is a bias?
-What are activation functions?
-  Sigmoid?
-  Tanh?
-  Relu?
-  Softmax?
-What is a layer?
-What is a hidden layer?
-What is Logistic Regression?
-What is a loss function?
-What is a cost function?
-What is forward propagation?
-What is Gradient Descent?
-What is back propagation?
-What is a Computation Graph?
-How to initialize weights/biases
-The importance of vectorization
-How to split up your data
-What is multiclass classification?
-What is a one-hot vector?
-How to encode/decode one-hot vectors
-What is the softmax function and when do you use it?
-What is cross-entropy loss?
-What is pickling in Python?
+Models.
+Supervised Learning.
+Prediction.
+Node.
+Weight.
+Bias.
+Activation Functions.
+Sigmoid.
+Tanh.
+Relu.
+Softmax.
+Neuron.
+Neural Network Layers.
+Logistic Regression.
+Loss Function.
+Cost Function.
+Forward Propagation.
+Gradient Descent.
+Back Propagation.
+Computation Graph.
+Weights/Biases initialization.
+Numpy to perform linear algebra operations.
+To achieve the classification were coded three ways to perform it:
+
+Sigmoid Neuron.
+Two-Layers Neural Network.
+Deep Neural Network.
