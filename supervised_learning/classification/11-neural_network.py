@@ -72,7 +72,7 @@ class NeuralNetwork:
 
     def forward_prop(self, X):
         """
-        Calculates the fôrward propagation of the neural network
+        Calculates the forward propagation of the neural network
 
             X: a numpy.ndarray with shape (nx, m) that contains the input data
             nx: number of input features to the neuron
