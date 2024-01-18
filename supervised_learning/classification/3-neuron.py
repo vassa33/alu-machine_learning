@@ -41,9 +41,9 @@ class Neuron():
         return self.__A
 
     def cost(self, Y, A):
-        """measures specificity of output based on labels"""
-        # other def: calc cross-entropy loss
+        """Calculates the cost of the model using logistic regression"""
         # cost = -(1/m) * Σ [ Y * log(A) + (1 - Y) * log(1.0000001 - A) ]
+        # To avoid division_by_zero errors, use '1.0000001 - A' instead of '1 - A'
         m = Y.shape[1]
         cost = -(1 / m) * np.sum(Y * np.log(A) +
                                  (1 - Y) * np.log(1.0000001 - A))
