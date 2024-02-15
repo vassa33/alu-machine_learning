@@ -1,4 +1,4 @@
-# 0x04. Error Analysis
+# Error Analysis
 
 ![image](https://github.com/vassa33/alu-machine_learning/assets/61325877/a49c711b-6d44-4685-9260-8b962dd26431)
 
