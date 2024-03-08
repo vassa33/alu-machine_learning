@@ -1,5 +1,8 @@
 # Pandas
 
+![image](https://github.com/vassa33/alu-machine_learning/assets/61325877/10293f87-7e7d-4439-8e15-b4faf8ed8a2e)
+
+
 ## Learning Objectives
 
 ### General
