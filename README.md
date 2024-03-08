@@ -46,6 +46,5 @@ Automating data Extraction and Processing
 | ------------ |
 |Dimensionality Reduction|
 |Clustering|
-|HMM|
 |Hyperparameter Tuning|
 |Autoencoders|
