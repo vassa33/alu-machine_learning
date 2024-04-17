@@ -38,13 +38,3 @@ Automating data Extraction and Processing
 |Error Analysis|
 |Regularization|
 |Convolutional Neural Networks (CNN)|
-
-
-## Unsupervised Learning 📖
-
-|  Topics |
-| ------------ |
-|Dimensionality Reduction|
-|Clustering|
-|Hyperparameter Tuning|
-|Autoencoders|
