@@ -26,20 +26,46 @@ The model's performance is evaluated using accuracy score, which measures the pe
 ## Accuracy
 The accuracy of the initial model is displayed in the app interface. Additionally, the accuracy of the updated model after retraining is also displayed.
 
-## How to Run
-To run the Diabetes Prediction app locally, follow these steps:
-1. Clone the repository to your local machine.
-2. Install the required dependencies listed in `requirements.txt`.
-3. Run the app using the following command:
-   ```
-   streamlit run diabetes_prediction_app.py
-   ```
-4. Access the app through the URL displayed in the terminal after running the command.
+Sure, here's the updated section on how to run the Diabetes Prediction app in the main README.md:
 
+---
+
+## How to Run
+
+1. **Clone the Repository**: 
+   ```bash
+   git clone https://github.com/vassa33/alu-machine_learning.git
+   ```
+
+2. **Navigate to the System's Directory**:
+   ```bash
+   cd diabetes_prediction_system
+   ```
+
+3. **Install Dependencies**:
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+4. **Run the App**:
+   - **Locally**: 
+     ```bash
+     streamlit run src/diabetes_prediction_app.py
+     ```
+     The `diabetes_prediction_app.py` file is located in the `src` directory.
+     Access the app through the URL displayed in the terminal after running the command.
+   
+   - **Via Streamlit Sharing**: 
 Alternatively, you can access the deployed app on Streamlit through the following URL: [Diabetes Prediction App](https://share.streamlit.io/your-username/diabetes-prediction-app/main/app.py)
 
+
+5. **Interact with the App**:
+   - Once the app is running, open the provided URL in your web browser.
+   - Use the sidebar sliders to input patient data.
+   - The app will display predictions for diabetes and provide visualizations of the patient's data.
+
 ## Accessing the Saved Model
-To access the trained machine learning model, use the following code snippet:
+To access the trained machine-learning model, use the following code snippet:
 
 ```python
 import joblib
@@ -52,8 +78,6 @@ loaded_model = joblib.load('model.pkl')
 # prediction = loaded_model.predict(user_data)
 ```
 
-## Interacting with the Model
-Users can interact with the model by inputting their health information through the sidebar in the app interface. After entering the required information, the app will display the prediction result along with visualizations comparing the user's data with the dataset.
 
 ## Examples and Demonstrations
 Below are some screenshots demonstrating the app's UI:
