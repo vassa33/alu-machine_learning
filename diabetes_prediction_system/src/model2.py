@@ -48,53 +48,12 @@ def is_time_to_retrain(retraining_trigger):
 def wait_for_next_trigger():
     time.sleep(86400)  # Wait for 24 hours (86400 seconds)
 
-# Function to display user report
-def display_user_report(user_data, user_result, df, model, X_test, y_test):
-    st.title('Your Report:')
-    output = 'You are Not Diabetic' if user_result == 0 else 'You are Diabetic'
-    st.header(output)
-    st.subheader('Accuracy:')
-    st.write(f"{evaluate_model(model, X_test, y_test)*100:.2f}%")
-
-    # Visualisations
-    st.header('________________________________________')
-    st.title('Visualised Patient Report')
-    st.subheader('Blue dot = Not Diabetic')
-    st.subheader('Red dot = Diabetic')
-
-    if user_result == 0:
-        color = 'blue'
-    else:
-        color = 'red'
-
-    # Plot Age vs Pregnancies
-    st.subheader('Pregnancy count Graph (Others vs Yours)')
-    fig_preg = plt.figure()
-    ax1 = sns.scatterplot(x='Age', y='Pregnancies', data=df, hue='Outcome', palette='Greens')
-    ax2 = sns.scatterplot(x=user_data['Age'], y=user_data['Pregnancies'], s=150, color=color)
-    plt.xticks(np.arange(10, 100, 5))
-    plt.yticks(np.arange(0, 20, 2))
-    plt.title('0 - Healthy & 1 - Unhealthy')
-    st.pyplot(fig_preg)
-
-    # Plot Age vs Glucose
-    st.subheader('Glucose Value Graph (Others vs Yours)')
-    fig_glucose = plt.figure()
-    ax3 = sns.scatterplot(x='Age', y='Glucose', data=df, hue='Outcome', palette='rocket')
-    ax4 = sns.scatterplot(x=user_data['Age'], y=user_data['Glucose'], s=150, color=color)
-    plt.xticks(np.arange(10, 100, 5))
-    plt.yticks(np.arange(0, 220, 10))
-    plt.title('0 - Healthy & 1 - Unhealthy')
-    st.pyplot(fig_glucose)
-
-    # Additional plots...
-
 # Main app code
 def main():
     st.title('Diabetes Checkup')
 
     # Load the Data
-    file_path = 'data/diabetes.csv'
+    file_path = 'C:/Users/Lenovo/Desktop/Programming/alu-machine_learning/diabetes_prediction_system/data/diabetes.csv'
     df, X, y = load_data(file_path)
     st.sidebar.header('Patient Data')
     st.subheader('Training Data Stats')
@@ -139,12 +98,12 @@ def main():
     # Train the Initial Model
     initial_model = train_model(X_train, y_train)
     initial_accuracy = evaluate_model(initial_model, X_test, y_test)
-    st.write("Initial Model Accuracy:", initial_accuracy)
+    st.write("Model Accuracy:", initial_accuracy)
 
     # Define the Trigger for Retraining
     retraining_trigger = "weekly"
 
-    # Retraining Loop
+# Retraining Loop
     while True:
         # Check if it's time to retrain the model
         if is_time_to_retrain(retraining_trigger):
@@ -160,8 +119,93 @@ def main():
             user_data_standardized = standardize_input_data(user_data, scaler)
             user_result = updated_model.predict(user_data_standardized)
 
-            # Display User Report
-            display_user_report(user_data, user_result, df, updated_model, X_test, y_test)
+            # Output
+            st.title('Your Report:')
+            output = 'You are Not Diabetic' if user_result[0] == 0 else 'You are Diabetic'
+            st.header(output)
+            st.subheader('Accuracy:')
+            st.write(f"{evaluate_model(updated_model, X_test, y_test)*100:.2f}%")
+
+            # Visualisations
+            st.header('________________________________________')
+            st.title('Visualised Patient Report')
+            st.subheader('Blue dot = Not Diabetic')
+            st.subheader('Red dot = Diabetic')
+
+            if user_result[0] == 0:
+                color = 'blue'
+            else:
+                color = 'red'
+
+            # Plot Age vs Pregnancies
+            st.subheader('Pregnancy count Graph (Others vs Yours)')
+            fig_preg = plt.figure()
+            ax1 = sns.scatterplot(x='Age', y='Pregnancies', data=df, hue='Outcome', palette='Greens')
+            ax2 = sns.scatterplot(x=user_data['Age'], y=user_data['Pregnancies'], s=150, color=color)
+            plt.xticks(np.arange(10, 100, 5))
+            plt.yticks(np.arange(0, 20, 2))
+            plt.title('0 - Healthy & 1 - Unhealthy')
+            st.pyplot(fig_preg)
+
+            # Plot Age vs Glucose
+            st.subheader('Glucose Value Graph (Others vs Yours)')
+            fig_glucose = plt.figure()
+            ax3 = sns.scatterplot(x='Age', y='Glucose', data=df, hue='Outcome', palette='rocket')
+            ax4 = sns.scatterplot(x=user_data['Age'], y=user_data['Glucose'], s=150, color=color)
+            plt.xticks(np.arange(10, 100, 5))
+            plt.yticks(np.arange(0, 220, 10))
+            plt.title('0 - Healthy & 1 - Unhealthy')
+            st.pyplot(fig_glucose)
+
+            # Plot Age vs Blood Pressure
+            st.subheader('Blood Pressure Value Graph (Others vs Yours)')
+            fig_bp = plt.figure()
+            ax5 = sns.scatterplot(x='Age', y='BloodPressure', data=df, hue='Outcome', palette='Purples')
+            ax6 = sns.scatterplot(x=user_data['Age'], y=user_data['BloodPressure'], s=150, color=color)
+            plt.xticks(np.arange(10, 100, 5))
+            plt.yticks(np.arange(0, 130, 10))
+            plt.title('0 - Healthy & 1 - Unhealthy')
+            st.pyplot(fig_bp)
+
+            # Plot Age vs Skin Thickness
+            st.subheader('Skin Thickness Value Graph (Others vs Yours)')
+            fig_st = plt.figure()
+            ax7 = sns.scatterplot(x='Age', y='SkinThickness', data=df, hue='Outcome', palette='Blues')
+            ax8 = sns.scatterplot(x=user_data['Age'], y=user_data['SkinThickness'], s=150, color=color)
+            plt.xticks(np.arange(10, 100, 5))
+            plt.yticks(np.arange(0, 110, 10))
+            plt.title('0 - Healthy & 1 - Unhealthy')
+            st.pyplot(fig_st)
+
+            # Plot Age vs Insulin
+            st.subheader('Insulin Value Graph (Others vs Yours)')
+            fig_i = plt.figure()
+            ax9 = sns.scatterplot(x='Age', y='Insulin', data=df, hue='Outcome', palette='binary')
+            ax10 = sns.scatterplot(x=user_data['Age'], y=user_data['Insulin'], s=150, color=color)
+            plt.xticks(np.arange(10, 100, 5))
+            plt.yticks(np.arange(0, 900, 50))
+            plt.title('0 - Healthy & 1 - Unhealthy')
+            st.pyplot(fig_i)
+
+            # Plot Age vs BMI
+            st.subheader('BMI Value Graph (Others vs Yours)')
+            fig_bmi = plt.figure()
+            ax11 = sns.scatterplot(x='Age', y='BMI', data=df, hue='Outcome', palette='rainbow')
+            ax12 = sns.scatterplot(x=user_data['Age'], y=user_data['BMI'], s=150, color=color)
+            plt.xticks(np.arange(10, 100, 5))
+            plt.yticks(np.arange(0, 70, 5))
+            plt.title('0 - Healthy & 1 - Unhealthy')
+            st.pyplot(fig_bmi)
+
+            # Plot Age vs Diabetes Pedigree Function
+            st.subheader('DPF Value Graph (Others vs Yours)')
+            fig_dpf = plt.figure()
+            ax13 = sns.scatterplot(x='Age', y='DiabetesPedigreeFunction', data=df, hue='Outcome', palette='YlOrBr')
+            ax14 = sns.scatterplot(x=user_data['Age'], y=user_data['DiabetesPedigreeFunction'], s=150, color=color)
+            plt.xticks(np.arange(10, 100, 5))
+            plt.yticks(np.arange(0, 3, 0.2))
+            plt.title('0 - Healthy & 1 - Unhealthy')
+            st.pyplot(fig_dpf)
 
         # Optionally, add a delay before checking the trigger again
         wait_for_next_trigger()
