@@ -56,7 +56,7 @@ Sure, here's the updated section on how to run the Diabetes Prediction app in th
      Access the app through the URL displayed in the terminal after running the command.
    
    - **Via Streamlit Sharing**: 
-Alternatively, you can access the deployed app on Streamlit through the following URL: [Diabetes Detective App]([https://share.streamlit.io/your-username/diabetes-prediction-app/main/app.py](https://diabetes-detective.streamlit.app/))
+Alternatively, you can access the deployed app on Streamlit through the following URL: [Diabetes Detective App]](https://diabetes-detective.streamlit.app/)
 
 
 5. **Interact with the App**:
