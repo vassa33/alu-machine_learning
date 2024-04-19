@@ -16,7 +16,7 @@ import os
 
 
 # Original relative file path
-relative_path = 'data/diabetes.csv'
+relative_path = 'diabetes.csv'
 
 # Convert to absolute path
 absolute_path = os.path.abspath(relative_path)
