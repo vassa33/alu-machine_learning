@@ -21,7 +21,7 @@ The features used in the dataset are as follows:
 The machine learning model used in the app is a Random Forest Classifier. This model is chosen for its ability to handle tabular data and provide accurate predictions for binary classification tasks like diabetes prediction.
 
 ## Model Evaluation
-The model's performance is evaluated using accuracy score, which measures the percentage of correctly predicted outcomes out of all predictions made on the test dataset.
+The model's performance is evaluated using an accuracy score, which measures the percentage of correctly predicted outcomes out of all predictions made on the test dataset.
 
 ## Accuracy
 The accuracy of the initial model is displayed in the app interface. Additionally, the accuracy of the updated model after retraining is also displayed.
@@ -56,7 +56,7 @@ Sure, here's the updated section on how to run the Diabetes Prediction app in th
      Access the app through the URL displayed in the terminal after running the command.
    
    - **Via Streamlit Sharing**: 
-Alternatively, you can access the deployed app on Streamlit through the following URL: [Diabetes Prediction App](https://share.streamlit.io/your-username/diabetes-prediction-app/main/app.py)
+Alternatively, you can access the deployed app on Streamlit through the following URL: [[Diabetes Detective App]](https://diabetes-detective.streamlit.app/)
 
 
 5. **Interact with the App**:
