@@ -1,9 +1,5 @@
-#pip install streamlit
-#pip install pandas
-#pip install sklearn
-
-
-# IMPORT STATEMENTS
+# Diabetes Prediction System
+# Import the necessary libraries
 import streamlit as st
 import pandas as pd
 import numpy as np
@@ -16,7 +12,7 @@ import os
 
 
 # Original relative file path
-relative_path = 'diabetes.csv'
+relative_path = 'data/diabetes.csv'
 
 # Convert to absolute path
 absolute_path = os.path.abspath(relative_path)
@@ -24,20 +20,20 @@ absolute_path = os.path.abspath(relative_path)
 # Use the absolute path in your Streamlit app
 df = pd.read_csv(absolute_path)
 
-# HEADINGS
+# Headings
 st.title('Diabetes Checkup')
 st.sidebar.header('Patient Data')
 st.subheader('Training Data Stats')
 st.write(df.describe())
 
 
-# X AND Y DATA
+# X and Y data
 x = df.drop(['Outcome'], axis = 1)
 y = df.iloc[:, -1]
 x_train, x_test, y_train, y_test = train_test_split(x,y, test_size = 0.2, random_state = 0)
 
 
-# FUNCTION
+# Sidebar function
 def user_report():
     pregnancies = st.sidebar.slider('Pregnancies', 0,17, 3 )
     glucose = st.sidebar.slider('Glucose', 0,200, 120 )
@@ -62,17 +58,17 @@ def user_report():
     return report_data
 
 
-# PATIENT DATA
+# Patient data
 user_data = user_report()
 st.subheader('Patient Data')
 st.write(user_data)
 
-# MODEL
+# Model
 rf  = RandomForestClassifier()
 rf.fit(x_train, y_train)
 user_result = rf.predict(user_data)
 
-# OUTPUT
+# Output
 st.subheader('Your Report: ')
 output=''
 if user_result[0]==0:
@@ -83,11 +79,11 @@ st.title(output)
 st.subheader('Accuracy: ')
 st.write(str(accuracy_score(y_test, rf.predict(x_test))*100)+'%')
 
-# VISUALISATIONS
+# Visualizations
 st.write('___________________________________________')
 st.title('Visualised Patient Report')
 
-# COLOR FUNCTION
+# Color function
 if user_result[0]==0:
     color = 'blue'
 else:
