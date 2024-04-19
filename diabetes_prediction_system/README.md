@@ -1,7 +1,7 @@
-# Diabetes Prediction App
+# Diabetes Detection App
 
 ## Project Description
-The Diabetes Prediction app is a web application that predicts whether a person has diabetes based on several health features such as pregnancies, glucose level, blood pressure, skin thickness, insulin level, BMI, diabetes pedigree function, and age. The app utilizes a machine learning model trained on a dataset containing information about patients, including whether they have diabetes or not. 
+The Diabetes Detection app is a web application that predicts whether a person has diabetes based on several health features such as pregnancies, glucose level, blood pressure, skin thickness, insulin level, BMI, diabetes pedigree function, and age. The app utilizes a machine learning model trained on a dataset containing information about patients, including whether they have diabetes or not. 
 
 ## Data Used
 The data used for training the model is stored in a CSV file named `diabetes.csv`. This dataset contains information about 768 patients, including eight features and one target variable indicating whether the patient has diabetes or not.
