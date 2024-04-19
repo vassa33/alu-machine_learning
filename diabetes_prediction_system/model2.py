@@ -12,9 +12,17 @@ from sklearn.metrics import accuracy_score
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import train_test_split
 import seaborn as sns
+import os
 
 
-df = pd.read_csv('diabetes.csv')
+# Original relative file path
+relative_path = 'data/diabetes.csv'
+
+# Convert to absolute path
+absolute_path = os.path.abspath(relative_path)
+
+# Use the absolute path in your Streamlit app
+df = pd.read_csv(absolute_path)
 
 # HEADINGS
 st.title('Diabetes Checkup')
