@@ -24,11 +24,7 @@ The machine learning model used in the app is a Random Forest Classifier. This m
 The model's performance is evaluated using an accuracy score, which measures the percentage of correctly predicted outcomes out of all predictions made on the test dataset.
 
 ## Accuracy
-The accuracy of the initial model is displayed in the app interface. Additionally, the accuracy of the updated model after retraining is also displayed.
-
-Sure, here's the updated section on how to run the Diabetes Prediction app in the main README.md:
-
----
+The accuracy of the initial model is displayed in the app interface. Additionally, the accuracy of the updated model after **retraining** is also displayed.
 
 ## How to Run
 
@@ -71,7 +67,7 @@ To access the trained machine-learning model, use the following code snippet:
 import joblib
 
 # Load the saved model
-loaded_model = joblib.load('model.pkl')
+loaded_model = joblib.load('diabetes_model.pkl')
 
 # Use the loaded model for prediction
 # Example:
