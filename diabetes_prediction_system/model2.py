@@ -14,7 +14,7 @@ from sklearn.model_selection import train_test_split
 import seaborn as sns
 
 
-df = pd.read_csv('data/diabetes.csv')
+df = pd.read_csv('diabetes.csv')
 
 # HEADINGS
 st.title('Diabetes Checkup')
@@ -54,15 +54,10 @@ def user_report():
     return report_data
 
 
-
-
 # PATIENT DATA
 user_data = user_report()
 st.subheader('Patient Data')
 st.write(user_data)
-
-
-
 
 # MODEL
 rf  = RandomForestClassifier()
@@ -90,7 +85,6 @@ if user_result[0]==0:
 else:
     color = 'red'
 
-
 # Age vs Pregnancies
 st.header('Pregnancy count Graph (Others vs Yours)')
 fig_preg = plt.figure()
@@ -100,8 +94,6 @@ plt.xticks(np.arange(10,100,5))
 plt.yticks(np.arange(0,20,2))
 plt.title('0 - Healthy & 1 - Unhealthy')
 st.pyplot(fig_preg)
-
-
 
 # Age vs Glucose
 st.header('Glucose Value Graph (Others vs Yours)')
@@ -113,8 +105,6 @@ plt.yticks(np.arange(0,220,10))
 plt.title('0 - Healthy & 1 - Unhealthy')
 st.pyplot(fig_glucose)
 
-
-
 # Age vs Bp
 st.header('Blood Pressure Value Graph (Others vs Yours)')
 fig_bp = plt.figure()
@@ -124,7 +114,6 @@ plt.xticks(np.arange(10,100,5))
 plt.yticks(np.arange(0,130,10))
 plt.title('0 - Healthy & 1 - Unhealthy')
 st.pyplot(fig_bp)
-
 
 # Age vs St
 st.header('Skin Thickness Value Graph (Others vs Yours)')
@@ -136,7 +125,6 @@ plt.yticks(np.arange(0,110,10))
 plt.title('0 - Healthy & 1 - Unhealthy')
 st.pyplot(fig_st)
 
-
 # Age vs Insulin
 st.header('Insulin Value Graph (Others vs Yours)')
 fig_i = plt.figure()
@@ -147,7 +135,6 @@ plt.yticks(np.arange(0,900,50))
 plt.title('0 - Healthy & 1 - Unhealthy')
 st.pyplot(fig_i)
 
-
 # Age vs BMI
 st.header('BMI Value Graph (Others vs Yours)')
 fig_bmi = plt.figure()
@@ -157,7 +144,6 @@ plt.xticks(np.arange(10,100,5))
 plt.yticks(np.arange(0,70,5))
 plt.title('0 - Healthy & 1 - Unhealthy')
 st.pyplot(fig_bmi)
-
 
 # Age vs Dpf
 st.header('DPF Value Graph (Others vs Yours)')
