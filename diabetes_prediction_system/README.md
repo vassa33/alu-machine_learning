@@ -46,7 +46,7 @@ The accuracy of the initial model is displayed in the app interface. Additionall
 4. **Run the App**:
    - **Locally**: 
      ```bash
-     streamlit run src/diabetes_prediction_app.py
+     streamlit run src/diabetes_detective_app.py
      ```
      The `diabetes_prediction_app.py` file is located in the `src` directory.
      Access the app through the URL displayed in the terminal after running the command.
