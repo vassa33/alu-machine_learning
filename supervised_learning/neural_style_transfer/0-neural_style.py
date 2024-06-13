@@ -3,6 +3,7 @@
 Defines class NST that performs tasks for neural style transfer
 """
 
+
 import numpy as np
 import tensorflow as tf
 
@@ -18,7 +19,7 @@ class NST:
 
     instance attributes:
         style_image: preprocessed style image
-        content_image: preprocessed content image
+        content_image: preprocessed style image
         alpha: weight for content cost
         beta: weight for style cost
         model: the Keras model used to calculate cost
@@ -76,9 +77,7 @@ class NST:
         if (type(beta) is not float and type(beta) is not int) or beta < 0:
             raise TypeError("beta must be a non-negative number")
 
-        # Enable eager execution if not already enabled
-        if not tf.executing_eagerly():
-            tf.compat.v1.enable_eager_execution()
+        tf.enable_eager_execution()
 
         self.style_image = self.scale_image(style_image)
         self.content_image = self.scale_image(content_image)
@@ -119,11 +118,11 @@ class NST:
             w_new = 512
             h_new = int(h * (512 / w))
 
-        resized = tf.image.resize(np.expand_dims(image, axis=0),
-                                  size=(h_new, w_new), method='bicubic')
+        resized = tf.image.resize_bicubic(np.expand_dims(image, axis=0),
+                                          size=(h_new, w_new))
         rescaled = resized / 255
         rescaled = tf.clip_by_value(rescaled, 0, 1)
-        return rescaled
+        return (rescaled)
 
     def load_model(self):
         """
@@ -149,7 +148,7 @@ class NST:
         for layer in vgg.layers:
             if layer.name in self.style_layers:
                 style_outputs.append(layer.output)
-            if layer.name == self.content_layer:
+            if layer.name in self.content_layer:
                 content_output = layer.output
 
             layer.trainable = False
