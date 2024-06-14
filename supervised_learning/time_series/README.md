@@ -4,5 +4,5 @@
 This directory applies knowledge of RNNs to predict the value of Bitcoin with Time Series Forecasting:
 
 ## Tasks:
-[When to Invest](/supervised_learning/time_series/forecast_btc.py)
-[When to Invest Preprocess](/supervised_learning/time_series/preprocess_data.py)
+0. [When to Invest](/supervised_learning/time_series/forecast_btc.py)
+1. [When to Invest Preprocess](/supervised_learning/time_series/preprocess_data.py)
