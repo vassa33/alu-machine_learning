@@ -16,3 +16,18 @@ This directory contains work with word embeddings as part of natural language pr
 * Write a function that creates and trains a gensim fastText model.
 5. [ELMo](/supervised_learning/0x0F-word_embeddings/5-elmo.py)
 * Write a text file that answers multiple choice question about training an ELMo model.
+When training an ELMo embedding model, you are training:
+
+The internal weights of the BiLSTM
+The character embedding layer
+The weights applied to the hidden states
+In the text file 5-elmo, write the letter answer, followed by a newline, that lists the correct statements:
+
+A. 1, 2, 3
+B. 1, 2
+C. 2, 3
+D. 1, 3
+E. 1
+F. 2
+G. 3
+H. None of the above
