@@ -95,29 +95,40 @@ class LSTMCell:
 
     def forward(self, h_prev, c_prev, x_t):
         """
-        Performs forward propagation for one time step
+        Perform forward propagation for one time step
 
-        parameters:
-            h_prev [numpy.ndarray of shape (m, h)]:
-                contains previous hidden state
-                m: the batch size for the data
-                h: dimensionality of hidden state
-            c_prev [numpy.ndarray of shape (m, h)]:
-                contains previous cell state
-                m: the batch size for the data
-                h: dimensionality of hidden state
-            x_t [numpy.ndarray of shape (m, i)]:
-                contains data input for the cell
-                m: the batch size for the data
-                i: dimensionality of the data
+        Args:
+        h_prev: Previous hidden state, numpy.ndarray of shape (m, h)
+        c_prev: Previous cell state, numpy.ndarray of shape (m, h)
+        x_t: Input data, numpy.ndarray of shape (m, i)
 
-        output of the cell should use softmax activation function
-
-        returns:
-            h_next, c_next, y:
-            h_next: the next hidden state
-            c_next: the next cell state
-            y: the output of the cell
+        Returns:
+        h_next: Next hidden state
+        c_next: Next cell state
+        y: Output of the cell
         """
-        concatenation = np.concatenate((h_prev, x_t), axis=1)
-        u_gate = self.sigmoid
+        # Concatenate h_prev and x_t for matrix multiplication
+        h_x = np.concatenate((h_prev, x_t), axis=1)
+        
+        # Forget gate
+        ft = self.sigmoid(np.dot(h_x, self.Wf) + self.bf)
+        
+        # Update gate
+        ut = self.sigmoid(np.dot(h_x, self.Wu) + self.bu)
+        
+        # Intermediate cell state
+        cct = np.tanh(np.dot(h_x, self.Wc) + self.bc)
+        
+        # Next cell state
+        c_next = ft * c_prev + ut * cct
+        
+        # Output gate
+        ot = self.sigmoid(np.dot(h_x, self.Wo) + self.bo)
+        
+        # Next hidden state
+        h_next = ot * np.tanh(c_next)
+        
+        # Output
+        y = self.softmax(np.dot(h_next, self.Wy) + self.by)
+        
+        return h_next, c_next, y
