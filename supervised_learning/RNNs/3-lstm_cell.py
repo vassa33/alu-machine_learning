@@ -1,20 +1,19 @@
 #!/usr/bin/env python3
 """
-Defines the class LSTMCell that represents an LSTM unit
+Defines the class LSTMCell that represents an LSTM unit.
 """
-
 
 import numpy as np
 
 
 class LSTMCell:
     """
-    Represents a LSTM unit
+    Represents a LSTM unit.
 
-    class constructor:
+    Class constructor:
         def __init__(self, i, h, o)
 
-    public instance attributes:
+    Public instance attributes:
         Wf: forget gate weights
         bf: forget gate biases
         Wu: update gate weights
@@ -26,20 +25,21 @@ class LSTMCell:
         Wy: output weights
         by: output biases
 
-    public instance methods:
+    Public instance methods:
         def forward(self, h_prev, c_prev, x_t):
             performs forward propagation for one time step
     """
+
     def __init__(self, i, h, o):
         """
-        Class constructor
+        Class constructor.
 
-        parameters:
+        Parameters:
             i: dimensionality of the data
             h: dimensionality of the hidden state
             o: dimensionality of the outputs
 
-        creates public instance attributes:
+        Creates public instance attributes:
             Wf: forget gate weights
             bf: forget gate biases
             Wu: update gate weights
@@ -51,9 +51,9 @@ class LSTMCell:
             Wy: output weights
             by: output biases
 
-        weights should be initialized using random normal distribution
-        weights will be used on the right side for matrix multiplication
-        biases should be initiliazed as zeros
+        Weights should be initialized using random normal distribution.
+        Weights will be used on the right side for matrix multiplication.
+        Biases should be initialized as zeros.
         """
         self.bf = np.zeros((1, h))
         self.bu = np.zeros((1, h))
@@ -68,12 +68,12 @@ class LSTMCell:
 
     def softmax(self, x):
         """
-        Performs the softmax function
+        Performs the softmax function.
 
-        parameters:
+        Parameters:
             x: the value to perform softmax on to generate output of cell
 
-        return:
+        Returns:
             softmax of x
         """
         e_x = np.exp(x - np.max(x, axis=1, keepdims=True))
@@ -82,12 +82,12 @@ class LSTMCell:
 
     def sigmoid(self, x):
         """
-        Performs the sigmoid function
+        Performs the sigmoid function.
 
-        parameters:
+        Parameters:
             x: the value to perform sigmoid on
 
-        return:
+        Returns:
             sigmoid of x
         """
         sigmoid = 1 / (1 + np.exp(-x))
@@ -95,17 +95,17 @@ class LSTMCell:
 
     def forward(self, h_prev, c_prev, x_t):
         """
-        Perform forward propagation for one time step
+        Perform forward propagation for one time step.
 
         Args:
-        h_prev: Previous hidden state, numpy.ndarray of shape (m, h)
-        c_prev: Previous cell state, numpy.ndarray of shape (m, h)
-        x_t: Input data, numpy.ndarray of shape (m, i)
+            h_prev: Previous hidden state, numpy.ndarray of shape (m, h)
+            c_prev: Previous cell state, numpy.ndarray of shape (m, h)
+            x_t: Input data, numpy.ndarray of shape (m, i)
 
         Returns:
-        h_next: Next hidden state
-        c_next: Next cell state
-        y: Output of the cell
+            h_next: Next hidden state
+            c_next: Next cell state
+            y: Output of the cell
         """
         # Concatenate h_prev and x_t for matrix multiplication
         h_x = np.concatenate((h_prev, x_t), axis=1)
