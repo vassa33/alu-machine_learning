@@ -6,30 +6,24 @@ Defines function that performs forward propagation for bidirectional RNN
 
 import numpy as np
 
+
 def bi_rnn(bi_cell, X, h_0, h_t):
     """
-    Performs forward propagation for a bidirectional RNN.
-    
+    Performs forward propagation for a bidirectional RNN
+
     Args:
-        bi_cell: an instance of BidirectionalCell that will be used for the forward propagation
-        X: the data to be used, given as a numpy.ndarray of shape (t, m, i)
-           - t is the maximum number of time steps
-           - m is the batch size
-           - i is the dimensionality of the data
-        h_0: the initial hidden state in the forward direction, given as a numpy.ndarray of shape (m, h)
-           - h is the dimensionality of the hidden state
-        h_t: the initial hidden state in the backward direction, given as a numpy.ndarray of shape (m, h)
+        bi_cell (BidirectionalCell): instance of BidirectionalCell
+        X (np.ndarray): input data of shape (t, m, i)
+        h_0 (np.ndarray): initial hidden state in the forward direction of shape (m, h)
+        h_t (np.ndarray): initial hidden state in the backward direction of shape (m, h)
 
     Returns:
-        H: numpy.ndarray containing all of the concatenated hidden states
-        Y: numpy.ndarray containing all of the outputs
+        H (np.ndarray): concatenated hidden states from both directions for each time step
+        Y (np.ndarray): outputs for each time step
     """
-    t, m, i = X.shape
-    _, h = h_0.shape
-
-    # Initialize hidden states for both directions
-    H_f = np.zeros((t, m, h))
-    H_b = np.zeros((t, m, h))
+    t, m, _ = X.shape
+    H_f = np.zeros((t, m, h_0.shape[1]))
+    H_b = np.zeros((t, m, h_t.shape[1]))
 
     # Forward direction
     h_prev = h_0
@@ -46,7 +40,7 @@ def bi_rnn(bi_cell, X, h_0, h_t):
     # Concatenate the hidden states from both directions
     H = np.concatenate((H_f, H_b), axis=-1)
 
-    # Compute outputs
-    Y = np.array([bi_cell.output(H[step]) for step in range(t)])
+    # Compute the output for each time step using the concatenated hidden states
+    Y = np.array([bi_cell.output(H[step])[0] for step in range(t)])
 
     return H, Y
