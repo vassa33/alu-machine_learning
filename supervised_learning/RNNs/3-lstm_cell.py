@@ -109,26 +109,26 @@ class LSTMCell:
         """
         # Concatenate h_prev and x_t for matrix multiplication
         h_x = np.concatenate((h_prev, x_t), axis=1)
-        
+
         # Forget gate
         ft = self.sigmoid(np.dot(h_x, self.Wf) + self.bf)
-        
+
         # Update gate
         ut = self.sigmoid(np.dot(h_x, self.Wu) + self.bu)
-        
+
         # Intermediate cell state
         cct = np.tanh(np.dot(h_x, self.Wc) + self.bc)
-        
+
         # Next cell state
         c_next = ft * c_prev + ut * cct
-        
+
         # Output gate
         ot = self.sigmoid(np.dot(h_x, self.Wo) + self.bo)
-        
+
         # Next hidden state
         h_next = ot * np.tanh(c_next)
-        
+
         # Output
         y = self.softmax(np.dot(h_next, self.Wy) + self.by)
-        
+
         return h_next, c_next, y
