@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
-"""A Simple input loop"""
+"""
+Loop to handle user input
+"""
 
 while True:
     print("Q: ", end="")

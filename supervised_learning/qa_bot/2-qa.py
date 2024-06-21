@@ -1,14 +1,18 @@
 #!/usr/bin/env python3
-"""Answers mulptiple questions"""
+"""
+Find a snippet of text within a reference document to answer a question
+"""
 import tensorflow as tf
 import tensorflow_hub as hub
 from transformers import BertTokenizer, TFBertModel
 
 
 def question_answer(question, reference):
-    """Answers a question
-       question is the question to answer
-       reference is the doc to read from
+    """
+    Function to answer a question
+    :param question: a string containing the question to answer
+    :param reference: a string containing the reference document
+    :return: a string containing the answer
     """
     tokenizer = (BertTokenizer
                  .from_pretrained('bert-large-uncased-whole-word-masking'))
@@ -42,8 +46,10 @@ def question_answer(question, reference):
 
 
 def answer_loop(reference):
-    """A simple answer loop, with question answering
-       reference is the reference to answer the question from
+    """
+    Function to handle answer looping
+    :param reference: a string containing the reference document
+    :return: a string containing the answer
     """
     while True:
         print("Q: ", end="")

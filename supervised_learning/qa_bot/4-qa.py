@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
-"""Asnwers multiple questions from multiple documents"""
+"""
+Find a snippet of text within a reference document to answer a question
+"""
 import tensorflow as tf
 import tensorflow_hub as hub
 from transformers import BertTokenizer
@@ -32,9 +34,8 @@ def semantic_search(corpus_path, sentence):
 
 
 def text_search(question, reference):
-    """Answers a question
-       question is the question to answer
-       reference is the doc to read from
+    """
+    Function to search for text
     """
     tokenizer = (BertTokenizer
                  .from_pretrained('bert-large-uncased-whole-word-masking'))
@@ -68,15 +69,18 @@ def text_search(question, reference):
 
 
 def answer_question(question, reference):
-    """A wrapper function for semantic search and txt to search
-       returns the answer to the question"""
+    """
+    Function for semantic search and txt to search
+    return: answer to the question
+    """
     txt_to_search = semantic_search(reference, question)
     return text_search(question, txt_to_search)
 
 
 def qa_bot(reference):
-    """input output loop
-       reference is the path to the articles to search for an answer
+    """
+    Function to represent main
+    reference: path to the articles to search for an answer
     """
     while True:
         print("Q: ", end="")

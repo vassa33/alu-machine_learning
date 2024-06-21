@@ -1,14 +1,17 @@
 #!/usr/bin/env python3
-"""Searches multiple articles for an answer"""
+"""
+Find a snippet of text within a reference document to answer a question
+"""
 import tensorflow_hub as hub
 import os
 import numpy as np
 
 
 def semantic_search(corpus_path, sentence):
-    """Searches multiple articles for an answer
-       corpus_path is the path to the docs
-       sentence is the question or sentence trying to find best match for
+    """
+    Function to searches multiple articles
+    corpus_path: path to the docs
+    sentence: question or sentence trying to find best match
     """
     m = hub.load("https://tfhub.dev/google/universal-sentence-encoder-large/5")
 
