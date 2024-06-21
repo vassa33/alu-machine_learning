@@ -53,7 +53,7 @@ class Decoder(tf.keras.layers.Layer):
         x = self.dropout(x, training=training)
 
         for i in range(self.N):
-            x = self.blocks[i](x, encoder_output,
+            x = self.blocks[i](x, encoder_output, 
                                training,look_ahead_mask, padding_mask)
 
         return x
