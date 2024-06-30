@@ -3,7 +3,7 @@ import re
 import tensorflow as tf
 import tensorflow_hub as hub
 from transformers import BertTokenizer, TFBertForSequenceClassification, BertConfig
-
+import streamlit as st
 
 # Load the dataset
 with open('dataset.json', 'r') as file:
@@ -44,16 +44,22 @@ train_dataset = tf.data.Dataset.from_tensor_slices((
 )).shuffle(len(questions)).batch(8)
 
 # Load BERT model with a suitable configuration
-config = BertConfig.from_pretrained('bert-large-uncased', num_labels=tokenizer.vocab_size)
-model = TFBertForSequenceClassification.from_pretrained('bert-large-uncased', config=config)
+if not os.path.exists('./saved_model'):
+    config = BertConfig.from_pretrained('bert-large-uncased', num_labels=tokenizer.vocab_size)
+    model = TFBertForSequenceClassification.from_pretrained('bert-large-uncased', config=config)
 
-optimizer = tf.keras.optimizers.Adam(learning_rate=3e-5)
-loss = tf.keras.losses.SparseCategoricalCrossentropy(from_logits=True)
-metrics = [tf.keras.metrics.SparseCategoricalAccuracy('accuracy')]
+    optimizer = tf.keras.optimizers.Adam(learning_rate=3e-5)
+    loss = tf.keras.losses.SparseCategoricalCrossentropy(from_logits=True)
+    metrics = [tf.keras.metrics.SparseCategoricalAccuracy('accuracy')]
 
-model.compile(optimizer=optimizer, loss=loss, metrics=metrics)
+    model.compile(optimizer=optimizer, loss=loss, metrics=metrics)
 
-model.fit(train_dataset, epochs=3)
+    model.fit(train_dataset, epochs=3)
+    model.save_pretrained('./saved_model')
+    tokenizer.save_pretrained('./saved_model')
+else:
+    model = TFBertForSequenceClassification.from_pretrained('./saved_model')
+    tokenizer = BertTokenizer.from_pretrained('./saved_model')
 
 def get_answer(question):
     cleaned_question = clean_text(question)
@@ -67,16 +73,18 @@ def get_answer(question):
     answer = tokenizer.decode(answer_tokens)
     return answer
 
-def chatbot_interface():
-    print("Welcome to the Agriculture Chatbot. Ask a question related to farming and technology!")
-    while True:
-        question = input("Q: ")
-        if question.lower() in ["exit", "quit", "bye"]:
-            print("A: Goodbye!")
-            break
-        answer = get_answer(question)
-        print(f"A: {answer}")
+# Streamlit interface
+st.title("Agriculture Empowerment Chatbot")
+st.write("Ask a question related to farming and technology!")
 
-# Run the chatbot interface
-if __name__ == "__main__":
-    chatbot_interface()
+question = st.text_input("Enter your question:")
+
+if st.button("Get Answer"):
+    if question:
+        answer = get_answer(question)
+        st.write(f"**Answer:** {answer}")
+    else:
+        st.write("Please enter a question.")
+
+if st.button("Clear"):
+    question = ""
