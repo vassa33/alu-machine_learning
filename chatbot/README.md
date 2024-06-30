@@ -56,21 +56,26 @@ python chatbot.py
 After running the chatbot script, you can start asking questions related to farming and technology. The chatbot will provide responses based on the trained model.
 
 ### Example Conversations
-
+```
 **User:** How can technology improve farming?
 **Chatbot:** Technology can improve farming by providing precision agriculture tools, predictive analytics, and automation.
-
+```
+```
 **User:** What are the benefits of precision agriculture?
 **Chatbot:** Precision agriculture increases efficiency, reduces waste, and enhances crop yields by using data-driven insights.
-
+```
+```
 **User:** How does irrigation technology help farmers?
 **Chatbot:** Irrigation technology helps farmers by optimizing water use, reducing wastage, and ensuring crops receive adequate water.
-
+```
+```
 **User:** What tools can help with crop disease detection?
 **Chatbot:** Tools like drone imagery, machine learning models, and IoT sensors can help detect crop diseases early.
-
+```
+```
 **User:** Why is soil health important?
 **Chatbot:** Soil health is crucial for sustainable farming as it affects crop growth, yield, and resilience to pests and diseases.
+```
 
 ## Access the Chatbot
 
