@@ -19,15 +19,15 @@ def backward(Observation, Emission, Transition, Initial):
             M is the number of all possible observations
         :param Transition: 2D numpy.ndarray of shape (N, N) containing the
         transition probabilities
-            Transition[i, j] is the probability of transitioning from the hidden
+            Transition[i, j] is probability of transitioning from the hidden
             state i to j
-        :param Initial: numpy.ndarray of shape (N, 1) containing the probability
+        :param Initial: numpy.ndarray of shape (N, 1) containing probability
         of starting in a particular hidden state
         :return: P, B, or None, None on failure
             Pis the likelihood of the observations given the model
             B is a numpy.ndarray of shape (N, T) containing the backward path
             probabilities
-                B[i, j] is the probability of generating the future observations
+                B[i, j] is probability of generating the future observations
                 from hidden state i at time j
     """
     if type(Observation) is not np.ndarray or len(Observation.shape) != 1:
