@@ -18,16 +18,16 @@ def expectation_maximization(X, k, iterations=1000, tol=1e-5, verbose=False):
         :param tol: non-negative float containing tolerance of the log
         likelihood, used to determine early stopping i.e. if the difference is
         less than or equal to tol you should stop the algorithm
-        :param verbose: a boolean that determines if you should print information
+        :param verbose: boolean to determines if you should print information
         about the algorithm
         :return: pi, m, S, g, l, or None, None, None, None, None on failure
             pi is a numpy.ndarray of shape (k,) containing the priors for each
             cluster
-            m is a numpy.ndarray of shape (k, d) containing the centroid means for
+            m is a numpy.ndarray of shape (k, d) containing centroid means for
             each cluster
             S is a numpy.ndarray of shape (k, d, d) containing the covariance
             matrices for each cluster
-            g is a numpy.ndarray of shape (k, n) containing the probabilities for
+            g is a numpy.ndarray of shape (k, n) containing probabilities for
             each data point in each cluster
             l is the log likelihood of the model
     """
