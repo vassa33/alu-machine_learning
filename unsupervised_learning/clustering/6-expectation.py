@@ -12,7 +12,7 @@ def expectation(X, pi, m, S):
         :param X: numpy.ndarray of shape (n, d) containing the data set
         :param pi: numpy.ndarray of shape (k,) containing the priors for each
         cluster
-        :param m: numpy.ndarray of shape (k, d) containing the centroid means for
+        :param m: numpy.ndarray of shape (k, d) containing centroid means for
         each cluster
         :param S: numpy.ndarray of shape (k, d, d) containing the covariance
         matrices for each cluster
