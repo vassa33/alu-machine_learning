@@ -4,6 +4,7 @@
 """
 import numpy as np
 
+
 def pca(X, ndim):
     """
         Function that performs PCA on a dataset

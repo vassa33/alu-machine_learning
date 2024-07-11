@@ -4,6 +4,7 @@
 """
 import numpy as np
 
+
 def pca(X, var=0.95):
     """
         Function that performs PCA on a dataset
