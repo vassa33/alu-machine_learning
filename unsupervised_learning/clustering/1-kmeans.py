@@ -8,7 +8,7 @@ import numpy as np
 def kmeans(X, k, iterations=1000):
     """
         Performs K-means on a dataset
-        :param X: numpy.ndarray of shape (n, d) containing the dataset that will
+        :param X: numpy.ndarray of shape (n, d) containing dataset that will
         be used for K-means clustering
             n is the number of data points
             d is the number of dimensions for each data point
