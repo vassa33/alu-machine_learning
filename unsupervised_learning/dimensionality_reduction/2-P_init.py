@@ -19,8 +19,8 @@ def P_init(X, perplexity):
             distance between two data points
             P: a numpy.ndarray of shape (n, n) initialized to all 0‘s that will
             contain the P affinities
-            betas: a numpy.ndarray of shape (n, 1) initialized to all 1’s that will
-            contain all of the beta values
+            betas: a numpy.ndarray of shape (n, 1) initialized to all 1’s
+            that will contain all of the beta values
             H is the Shannon entropy for perplexity perplexity
     """
     n, d = X.shape
