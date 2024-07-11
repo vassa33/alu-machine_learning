@@ -8,8 +8,8 @@ import numpy as np
 def variance(X, C):
     """
         Calculates the intra-cluster variance
-        :param X: numpy.ndarray of shape (n, d) containing the data set
-        :param C: numpy.ndarray of shape (k, d) containing the centroid means for
+        :param X: numpy.ndarray of shape (n, d) containing data set
+        :param C: numpy.ndarray of shape (k, d) containing centroid means for
         each cluster
         :return: var, or None on failure
             var is the total variance
