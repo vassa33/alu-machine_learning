@@ -14,9 +14,9 @@ class GaussianProcess:
     def __init__(self, X_init, Y_init, l=1, sigma_f=1):
         """
             A function that initializes a class
-            :param X_init: numpy.ndarray of shape (t, 1) representing the inputs
+            :param X_init: numpy.ndarray of shape (t, 1) representing inputs
             already sampled with the black-box function
-            :param Y_init: numpy.ndarray of shape (t, 1) representing the outputs
+            :param Y_init: numpy.ndarray of shape (t, 1) representing outputs
             of the black-box function for each input in X_init
             :param l: the length parameter for the kernel
             :param sigma_f: the standard deviation given to the output of the
@@ -48,7 +48,7 @@ class GaussianProcess:
             :param X_s: numpy.ndarray of shape (s, 1) containing all of the
             points whose mean and standard deviation should be calculated
             :return: mu, sigma
-                mu is a numpy.ndarray of shape (s,) containing the mean for each
+                mu is a numpy.ndarray of shape (s,) containing mean for each
                 point in X_s, respectively
                 sigma is a numpy.ndarray of shape (s,) containing the standard
                 deviation for each point in X_s, respectively
