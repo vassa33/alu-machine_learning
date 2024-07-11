@@ -14,9 +14,9 @@ def P_affinities(X, tol=1e-5, perplexity=30.0):
         transformed by t-SNE
             n is the number of data points
             d is the number of dimensions in each point
-        :param tol: the maximum tolerance allowed (inclusive) for the difference
+        :param tol: maximum tolerance allowed (inclusive) for difference
         in Shannon entropy from perplexity for all Gaussian distributions
-        :param perplexity: perplexity that all Gaussian distributions should have
+        :param perplexity: perplexity that all Gaussian distributions have
         :return: P, a numpy.ndarray of shape (n, n) containing the symmetric P
         affinities
     """
