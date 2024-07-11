@@ -17,7 +17,7 @@ def tsne(X, ndims=2, idims=50, perplexity=30.0, iterations=1000, lr=500):
             n is the number of data points
             d is the number of dimensions in each point
         :param ndims: is the new dimensional representation of X
-        :param idims: the intermediate dimensional representation of X after PCA
+        :param idims: intermediate dimensional representation of X after PCA
         :param perplexity: the perplexity
         :param iterations: the number of iterations
         :param lr: the learning rate
