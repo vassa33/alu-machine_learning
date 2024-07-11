@@ -12,7 +12,7 @@ def pca(X, ndim):
             n is the number of data points
             d is the number of dimensions in each point
         :param ndim: the new dimensionality of the transformed X
-        :return: T, a numpy.ndarray of shape (n, ndim) containing the transformed
+        :return: T, a numpy.ndarray of shape (n, ndim) containing transformed
         version of X
     """
     X_mean = X - X.mean(axis=0)
