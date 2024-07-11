@@ -14,8 +14,8 @@ def Q_affinities(Y):
             ndim is the new dimensional representation of X
         :return: Q, num:
             Q is a numpy.ndarray of shape (n, n) containing the Q affinities
-            num is a numpy.ndarray of shape (n, n) containing the numerator of the
-            Q affinities
+            num is a numpy.ndarray of shape (n, n) containing the numerator
+            of the Q affinities
     """
     sum_Y = np.sum(np.square(Y), 1)
     num = -2 * np.dot(Y, Y.T)
