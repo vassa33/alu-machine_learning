@@ -8,7 +8,7 @@ import tensorflow.keras as keras
 def autoencoder(input_dims, hidden_layers, latent_dims):
     """
         Creates an autoencoder
-        :param input_dims: an integer containing the dimensions of the model input
+        :param input_dims: an integer containing the dimensions of model input
         :param hidden_layers: a list containing the number of nodes for each
         hidden layer in the encoder, respectively
         :param latent_dims: an integer containing the dimensions of the latent
@@ -34,7 +34,7 @@ def autoencoder(input_dims, hidden_layers, latent_dims):
 
     def sample_z(args):
         """
-        Sampling function
+            Sampling function
         """
         mu, sigma = args
         batch = keras.backend.shape(mu)[0]
@@ -63,7 +63,7 @@ def autoencoder(input_dims, hidden_layers, latent_dims):
 
     def vae_loss(x, x_decoded_mean):
         """
-        VAE loss function
+            VAE loss function
         """
         xent_loss = keras.backend.binary_crossentropy(x, x_decoded_mean)
         xent_loss = keras.backend.sum(xent_loss, axis=1)

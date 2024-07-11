@@ -8,7 +8,7 @@ import tensorflow.keras as keras
 def autoencoder(input_dims, filters, latent_dims):
     """
         Creates an autoencoder
-        :param input_dims: an integer containing the dimensions of the model input
+        :param input_dims: an integer containing the dimensions of model input
         :param hidden_layers: a list containing the number of nodes for each
         hidden layer in the encoder, respectively
         :param latent_dims: an integer containing the dimensions of the latent
