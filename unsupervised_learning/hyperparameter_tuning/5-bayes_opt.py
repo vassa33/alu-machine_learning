@@ -18,9 +18,9 @@ class BayesianOptimization:
         """
             A function that initializes the class BayesianOptimization
             :param f: the black-box function to be optimized
-            :param X_init: numpy.ndarray of shape (t, 1) representing the inputs
+            :param X_init: numpy.ndarray of shape (t, 1) representing inputs
             already sampled with the black-box function
-            :param Y_init: numpy.ndarray of shape (t, 1) representing the outputs
+            :param Y_init: numpy.ndarray of shape (t, 1) representing outputs
             of the black-box function for each input in X_init
             :param bounds: tuple of (min, max) representing the bounds of the
             space in which to look for the optimal point
@@ -44,7 +44,7 @@ class BayesianOptimization:
         """
             Calculates the next best sample location
             :return: X_next, EI
-                X_next is a numpy.ndarray of shape (1,) representing the next best
+                X_next is a numpy.ndarray of shape (1,) representing next best
                 sample point
                 EI is a numpy.ndarray of shape (ac_samples,) containing the
                 expected improvement of each potential sample
