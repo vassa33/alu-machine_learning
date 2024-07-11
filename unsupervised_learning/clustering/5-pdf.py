@@ -8,15 +8,15 @@ import numpy as np
 def pdf(X, m, S):
     """
         Calculates the probability density function of a Gaussian distribution
-        :param X: numpy.ndarray of shape (n, d) containing the data points whose
+        :param X: numpy.ndarray of shape (n, d) containing data points whose
         PDF should be evaluated
         :param m: numpy.ndarray of shape (d,) containing the mean of the
         distribution
-        :param S: numpy.ndarray of shape (d, d) containing the covariance of the
+        :param S: numpy.ndarray of shape (d, d) containing covariance of
         distribution
         :return: P, or None on failure
-            P is a numpy.ndarray of shape (n,) containing the PDF values for each
-            data point
+            P is a numpy.ndarray of shape (n,) containing the PDF values
+            for each data point
     """
     if type(X) is not np.ndarray or len(X.shape) != 2:
         return None
