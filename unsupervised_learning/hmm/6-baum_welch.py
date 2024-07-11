@@ -51,7 +51,7 @@ def backward(Observation, Emission, Transition, Initial):
 def baum_welch(Observations, Transition, Emission, Initial, iterations=1000):
     """
         Performs the Baum-Welch algorithm for a hidden markov model
-        :param Observations: numpy.ndarray of shape (T,) that contains the index
+        :param Observations: numpy.ndarray of shape (T,) that contains index
         of the observation
             T is the number of observations
         :param Emission: numpy.ndarray of shape (N, M) containing the emission
@@ -62,9 +62,9 @@ def baum_welch(Observations, Transition, Emission, Initial, iterations=1000):
             M is the number of all possible observations
         :param Transition: 2D numpy.ndarray of shape (N, N) containing the
         transition probabilities
-            Transition[i, j] is the probability of transitioning from the hidden
-            state i to j
-        :param Initial: numpy.ndarray of shape (N, 1) containing the probability
+            Transition[i, j] is the probability of transitioning from
+            hidden state i to j
+        :param Initial: numpy.ndarray of shape (N, 1) containing probability
         of starting in a particular hidden state
         :param iterations: iterations is the number of times
         expectation-maximization should be performed
