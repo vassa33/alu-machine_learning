@@ -1,14 +1,15 @@
 #!/usr/bin/env python3
 """
-    Calculates the most likely sequence of hidden states for a hidden markov model
+    Calculates the most likely sequence of hidden states for
+    a hidden markov model
 """
 import numpy as np
 
 
 def viterbi(Observation, Emission, Transition, Initial):
     """
-        Calculates the most likely sequence of hidden states for a hidden markov
-        model
+        Calculates the most likely sequence of hidden states for
+        a hidden markov model
         :param Observation: numpy.ndarray of shape (T,) that contains the index
         of the observation
             T is the number of observations
@@ -20,13 +21,13 @@ def viterbi(Observation, Emission, Transition, Initial):
             M is the number of all possible observations
         :param Transition: 2D numpy.ndarray of shape (N, N) containing the
         transition probabilities
-            Transition[i, j] is the probability of transitioning from the hidden
+            Transition[i, j] is probability of transitioning from the hidden
             state i to j
-        :param Initial: numpy.ndarray of shape (N, 1) containing the probability
+        :param Initial: numpy.ndarray of shape (N, 1) containing probability
         of starting in a particular hidden state
         :return: path, P, or None, None on failure
-            path is the a list of length T containing the most likely sequence of
-            hidden states
+            path is the a list of length T containing the most likely
+            sequence of hidden states
             P is the probability of obtaining the path sequence
     """
     if type(Observation) is not np.ndarray or len(Observation.shape) != 1:
