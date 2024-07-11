@@ -18,8 +18,8 @@ def optimum_k(X, kmin=1, kmax=None, iterations=1000):
         :param iterations: positive integer containing the maximum number of
         iterations for K-means
         :return: results, d_vars, or None, None on failure
-            results is a list containing the outputs of K-means for each cluster
-            size
+            results is a list containing the outputs of K-means for each
+            cluster size
             d_vars is a list containing the difference in variance from the
             smallest cluster size for each cluster size
     """
