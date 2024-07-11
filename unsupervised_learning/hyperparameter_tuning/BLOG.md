@@ -57,8 +57,6 @@ We also implemented early stopping to prevent overfitting and reduce computation
 
 ## Results and Conclusions
 
-[Insert your convergence plot here]
-
 After running the optimization for 30 iterations, we observed several interesting patterns:
 
 1. The learning rate tended to converge to values around 1e-3, suggesting this is a good default for similar problems.
