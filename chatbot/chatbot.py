@@ -2,7 +2,6 @@ import json
 import re
 import os
 import tensorflow as tf
-import tensorflow_hub as hub
 from transformers import BertTokenizer, TFBertForSequenceClassification, BertConfig
 import streamlit as st
 
@@ -34,30 +33,35 @@ def tokenize(texts):
     )
 
 tokenized_questions = tokenize(questions)
-tokenized_answers = tokenize(answers)
 
+# Create integer labels for answers
+answer_ids = list(range(len(answers)))  # Assuming each answer is unique and corresponds to a unique label
+
+# Prepare the dataset
 train_dataset = tf.data.Dataset.from_tensor_slices((
     {
         'input_ids': tokenized_questions['input_ids'],
         'attention_mask': tokenized_questions['attention_mask']
     },
-    tokenized_answers['input_ids']
+    answer_ids
 )).shuffle(len(questions)).batch(8)
 
 # Load BERT model with a suitable configuration
 if not os.path.exists('./saved_model'):
-    config = BertConfig.from_pretrained('bert-large-uncased', num_labels=tokenizer.vocab_size)
+    config = BertConfig.from_pretrained('bert-large-uncased', num_labels=len(answer_ids))
     model = TFBertForSequenceClassification.from_pretrained('bert-large-uncased', config=config)
 
     optimizer = tf.keras.optimizers.Adam(learning_rate=3e-5)
     loss = tf.keras.losses.SparseCategoricalCrossentropy(from_logits=True)
     metrics = [tf.keras.metrics.SparseCategoricalAccuracy('accuracy')]
 
-    model.compile(optimizer=optimizer, loss=loss, metrics=metrics)
-
-    model.fit(train_dataset, epochs=3)
-    model.save_pretrained('./saved_model')
-    tokenizer.save_pretrained('./saved_model')
+    # Compile and train the model within a strategy scope
+    strategy = tf.distribute.get_strategy()
+    with strategy.scope():
+        model.compile(optimizer=optimizer, loss=loss, metrics=metrics)
+        model.fit(train_dataset, epochs=3)
+        model.save_pretrained('./saved_model')
+        tokenizer.save_pretrained('./saved_model')
 else:
     model = TFBertForSequenceClassification.from_pretrained('./saved_model')
     tokenizer = BertTokenizer.from_pretrained('./saved_model')
@@ -69,9 +73,8 @@ def get_answer(question):
     attention_mask = inputs['attention_mask']
     
     outputs = model(input_ids, attention_mask=attention_mask)
-    answer_start = tf.argmax(outputs.logits, axis=-1).numpy()[0]
-    answer_tokens = input_ids[0, answer_start:answer_start+10]  # Adjust slice length as needed
-    answer = tokenizer.decode(answer_tokens)
+    answer_id = tf.argmax(outputs.logits, axis=-1).numpy()[0]
+    answer = answers[answer_id]  # Retrieve the answer using the predicted label
     return answer
 
 # Streamlit interface
