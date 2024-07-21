@@ -2,10 +2,6 @@
 
 This repository contains a chatbot designed to answer questions related to empowering farmers with technology for sustainable year-round farming, enhancing food security. The chatbot uses the BERT model fine-tuned on a custom dataset.
 
-## Link to Dataset
-
-The dataset used for training the chatbot is a custom collection of question-answer pairs related to farming and technology. You can download the dataset [here](dataset.json).
-
 ## Performance Metrics
 
 The chatbot was evaluated using the following performance metrics:
@@ -15,7 +11,7 @@ The chatbot was evaluated using the following performance metrics:
 
 Performance results after training for 3 epochs:
 
-- **Accuracy**: 95%
+- **Accuracy**: 76%
 - **Loss**: 0.05
 
 These metrics indicate the chatbot's high accuracy and low error rate in generating responses relevant to the questions asked.
@@ -36,7 +32,7 @@ cd chatbot
 Ensure you have Python 3.7+ and install the necessary libraries:
 
 ```bash
-pip install tensorflow tensorflow-hub transformers
+pip install tensorflow tensorflow-hub transformers keras streamlit
 ```
 
 3. **Download the Dataset**
@@ -48,7 +44,7 @@ Download the dataset and place it in the same directory as your script. [Downloa
 Execute the chatbot script:
 
 ```bash
-python chatbot.py
+streamlit run chatbot.py
 ```
 
 ## Usage
@@ -58,38 +54,20 @@ After running the chatbot script, you can start asking questions related to farm
 ### Example Conversations
 ```
 **User:** How can technology improve farming?
-**Chatbot:** Technology can improve farming by providing precision agriculture tools, predictive analytics, and automation.
+**Chatbot:** "Farmers can use data analytics to monitor crop health, predict yields, manage resources efficiently, and make informed decisions."
 ```
 ```
-**User:** What are the benefits of precision agriculture?
-**Chatbot:** Precision agriculture increases efficiency, reduces waste, and enhances crop yields by using data-driven insights.
-```
-```
-**User:** How does irrigation technology help farmers?
-**Chatbot:** Irrigation technology helps farmers by optimizing water use, reducing wastage, and ensuring crops receive adequate water.
-```
-```
-**User:** What tools can help with crop disease detection?
-**Chatbot:** Tools like drone imagery, machine learning models, and IoT sensors can help detect crop diseases early.
-```
-```
-**User:** Why is soil health important?
-**Chatbot:** Soil health is crucial for sustainable farming as it affects crop growth, yield, and resilience to pests and diseases.
+**User:** "How does climate change impact farming?"
+**Chatbot:** "Climate change affects farming by altering weather patterns, increasing the frequency of extreme events, and impacting crop productivity."
 ```
 
-## Access the Chatbot
+![image](https://github.com/user-attachments/assets/56ce0fed-3ffb-49bf-b15b-66af6e32d14c)
 
-You can access the chatbot via this link: [Agriculture Empowerment Chatbot](https://your-deployment-link.com)
-
-This link will direct you to a web-based interface where you can interact with the chatbot
 
 ## Contributing
 
 Contributions are welcome! If you have suggestions for improvements, please create an issue or submit a pull request.
 
-## License
-
-This project is licensed under the MIT License. See the LICENSE file for details.
 
 ---
 
