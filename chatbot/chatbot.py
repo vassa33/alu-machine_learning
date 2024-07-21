@@ -2,7 +2,9 @@ import json
 import re
 import os
 import tensorflow as tf
+import keras
 from transformers import BertTokenizer, TFBertForSequenceClassification, BertConfig
+from tensorflow.python.keras.optimizer_v2.adam import Adam
 import streamlit as st
 
 # Load the dataset
@@ -49,17 +51,17 @@ train_dataset = tf.data.Dataset.from_tensor_slices((
 # Load BERT model with a suitable configuration
 if not os.path.exists('./saved_model'):
     config = BertConfig.from_pretrained('bert-large-uncased', num_labels=len(answer_ids))
-    model = TFBertForSequenceClassification.from_pretrained('bert-large-uncased', config=config)
+    model, _ = TFBertForSequenceClassification.from_pretrained('bert-large-uncased', config=config)
 
-    optimizer = tf.keras.optimizers.Adam(learning_rate=3e-5)
-    loss = tf.keras.losses.SparseCategoricalCrossentropy(from_logits=True)
-    metrics = [tf.keras.metrics.SparseCategoricalAccuracy('accuracy')]
+    optimizer = Adam(learning_rate=3e-5)
+    loss = keras.losses.SparseCategoricalCrossentropy(from_logits=True)
+    metrics = [keras.metrics.SparseCategoricalAccuracy('accuracy')]
 
     # Compile and train the model within a strategy scope
     strategy = tf.distribute.get_strategy()
     with strategy.scope():
-        model.compile(optimizer=optimizer, loss=loss, metrics=metrics)
-        model.fit(train_dataset, epochs=3)
+        model.compile(optimizer='adam', loss='sparse_categorical_crossentropy', metrics=metrics)
+        model.fit(self=model, x=train_dataset, epochs=3)
         model.save_pretrained('./saved_model')
         tokenizer.save_pretrained('./saved_model')
 else:
@@ -72,7 +74,7 @@ def get_answer(question):
     input_ids = inputs['input_ids']
     attention_mask = inputs['attention_mask']
     
-    outputs = model(input_ids, attention_mask=attention_mask)
+    outputs = model[0](input_ids, attention_mask=attention_mask)
     answer_id = tf.argmax(outputs.logits, axis=-1).numpy()[0]
     answer = answers[answer_id]  # Retrieve the answer using the predicted label
     return answer
