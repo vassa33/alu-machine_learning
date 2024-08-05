@@ -1,7 +1,3 @@
-Here’s a comprehensive `README.md` template for your English to Kiswahili translation project using a Recurrent Neural Network (RNN). This README is designed to fulfill the rubric requirements, aiming for full marks by covering all aspects thoroughly.
-
----
-
 # English to Kiswahili Translation with RNNs
 
 ## Overview
@@ -25,10 +21,10 @@ This project develops a neural machine translation model using a Recurrent Neura
 ```
 
 ## Requirements
-- Python 3.8 or higher
-- TensorFlow 2.6.0
-- Keras 2.6.0
-- NumPy 1.19.5
+- Python
+- TensorFlow
+- Keras
+- NumPy
 
 To install the necessary libraries, run the following command:
 ```
