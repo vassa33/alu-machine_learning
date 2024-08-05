@@ -42,7 +42,7 @@ All these models have been pre-trained on ImageNet, providing a strong foundatio
 
 ## Evaluation Metrics
 
-We used the following metrics to assess model performance:
+I used the following metrics to assess model performance:
 
 1. Accuracy: Overall correctness of the model
 2. Loss: Cross-entropy loss to measure prediction certainty
